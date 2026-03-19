@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rama Niharika Rudra — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --border: #E8E8E4;
+  --text: #1A1A18;
+  --muted: #888880;
+  --faint: #F2F2EE;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-name{font-family:'DM Serif Display',serif;font-size:17px;letter-spacing:-0.3px;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.3px;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+
+.section-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+.section-header{display:flex;align-items:baseline;gap:20px;margin-bottom:40px;padding-top:88px;border-top:1px solid var(--border);}
+.section-num{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:2px;}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3vw,38px);letter-spacing:-0.8px;}
+
+/* HERO */
+.hero-grid{padding-top:120px;padding-bottom:80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.hero-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:5px 14px;margin-bottom:28px;}
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(42px,5vw,64px);line-height:1.08;letter-spacing:-1.5px;margin-bottom:24px;}
+.hero-name em{font-style:italic;color:var(--muted);}
+.hero-statement{font-size:15px;line-height:1.75;color:#555550;max-width:480px;margin-bottom:28px;}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--text);color:#fff;font-size:13px;font-weight:500;padding:13px 24px;border-radius:100px;text-decoration:none;transition:opacity 0.2s;}
+.hero-cta:hover{opacity:0.85;}
+.green-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;display:inline-block;}
+
+.hero-cards{display:flex;flex-direction:column;gap:14px;}
+.meta-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 24px;}
+.meta-card h4{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.cert-list{display:flex;flex-direction:column;gap:7px;}
+.cert-item{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text);line-height:1.4;}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--text);flex-shrink:0;margin-top:6px;}
+.comp-grid{display:flex;flex-direction:column;gap:7px;}
+.comp-item{background:var(--faint);border:1px solid var(--border);border-radius:9px;padding:9px 12px;}
+.comp-label{font-size:9px;font-weight:600;letter-spacing:1px;color:var(--muted);margin-bottom:3px;}
+.comp-value{font-size:11.5px;color:var(--text);line-height:1.5;}
+.skill-pills-sm{display:flex;flex-wrap:wrap;gap:6px;}
+.skill-pill-sm{font-size:11px;font-weight:500;background:var(--faint);border:1px solid var(--border);border-radius:100px;padding:4px 11px;color:var(--text);}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.stat-num{font-family:'DM Serif Display',serif;font-size:26px;letter-spacing:-0.5px;display:block;}
+.stat-label{font-size:11px;color:var(--muted);font-weight:500;}
+.contact-row{display:flex;flex-wrap:wrap;gap:8px;}
+.contact-chip{font-size:12px;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:5px 12px;white-space:nowrap;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+.contact-chip:hover{border-color:var(--text);color:var(--text);}
+
+/* ABOUT */
+.about-wrap{margin-bottom:80px;}
+.about-block{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px;}
+.about-block h3{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.about-text{font-size:14px;line-height:1.8;color:#555550;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:96px;}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;transition:transform 0.25s,box-shadow 0.25s;}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.08);}
+.project-card:hover .card-arrow{opacity:1;transform:translate(0,0);}
+.card-accent-bar{height:4px;}
+.card-body{padding:24px 24px 20px;}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;}
+.card-badge{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:15px;color:#fff;}
+.card-arrow{font-size:17px;color:var(--muted);opacity:0;transform:translate(-4px,4px);transition:all 0.2s;}
+.card-title{font-family:'DM Serif Display',serif;font-size:17px;letter-spacing:-0.3px;line-height:1.2;margin-bottom:5px;}
+.card-subtitle{font-size:12px;color:var(--muted);margin-bottom:16px;}
+.card-divider{height:1px;background:var(--border);margin-bottom:14px;}
+.card-tools{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.card-outcome-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.card-outcome{font-size:12px;font-weight:500;line-height:1.5;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(26,26,24,0.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--surface);border-radius:24px;width:100%;max-width:900px;max-height:90vh;overflow-y:auto;transform:translateY(24px) scale(0.98);transition:transform 0.3s;scrollbar-width:thin;}
+.modal-overlay.open .modal{transform:translateY(0) scale(1);}
+.modal-header{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--border);padding:18px 26px;display:flex;align-items:center;justify-content:space-between;border-radius:24px 24px 0 0;}
+.modal-header-left{display:flex;align-items:center;gap:13px;}
+.modal-badge{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:14px;color:#fff;}
+.modal-title{font-family:'DM Serif Display',serif;font-size:19px;letter-spacing:-0.3px;}
+.modal-close{width:34px;height:34px;border-radius:50%;background:var(--faint);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:background 0.2s;}
+.modal-close:hover{background:var(--border);color:var(--text);}
+.modal-meta{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);}
+.modal-meta-item{padding:14px 20px;border-right:1px solid var(--border);}
+.modal-meta-item:last-child{border-right:none;}
+.modal-meta-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.modal-meta-value{font-size:13px;font-weight:600;}
+.modal-body{padding:28px 26px;}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.modal-section{background:var(--faint);border:1px solid var(--border);border-radius:14px;padding:20px;}
+.modal-section.full{grid-column:1/-1;}
+.modal-section-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.modal-section-label span{display:inline-block;width:3px;height:14px;border-radius:2px;}
+.modal-section-text{font-size:13px;line-height:1.75;color:#555550;}
+.impact-grid{display:flex;flex-direction:column;gap:14px;}
+.impact-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.impact-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.pill-before{font-size:12px;font-weight:500;background:#FEF0EF;border:1px solid #F5C6C3;color:#8B2626;border-radius:100px;padding:5px 12px;}
+.pill-after{font-size:12px;font-weight:600;border-radius:100px;padding:5px 12px;border:1.5px solid;}
+.tools-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;}
+.tool-tag{font-size:11px;font-weight:500;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:4px 11px;}
+
+/* CV */
+.cv-wrap{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:44px;margin-bottom:96px;}
+.cv-header{margin-bottom:32px;}
+.cv-header h2{font-family:'DM Serif Display',serif;font-size:34px;letter-spacing:-0.8px;margin-bottom:5px;}
+.cv-header p{font-size:13px;color:var(--muted);}
+.cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+.cv-col-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px;padding-bottom:9px;border-bottom:1px solid var(--border);}
+.cv-role{margin-bottom:22px;}
+.cv-role-title{font-size:14px;font-weight:600;margin-bottom:2px;}
+.cv-role-meta{font-size:12px;color:var(--muted);margin-bottom:7px;}
+.cv-role ul{list-style:none;display:flex;flex-direction:column;gap:3px;}
+.cv-role li{font-size:12px;color:#555550;padding-left:14px;position:relative;line-height:1.55;}
+.cv-role li::before{content:'–';position:absolute;left:0;color:var(--muted);}
+.cv-edu{margin-bottom:14px;}
+.cv-edu-deg{font-size:13.5px;font-weight:600;}
+.cv-edu-school{font-size:12px;color:var(--muted);margin-top:1px;}
+.cv-gap{height:28px;}
+.cert-cv-item{margin-bottom:10px;}
+.cert-cv-name{font-size:13px;font-weight:600;}
+.cert-cv-issuer{font-size:11px;color:var(--muted);margin-top:1px;}
+.work-auth-box{background:var(--faint);border:1px solid var(--border);border-radius:12px;padding:13px 16px;margin-top:4px;}
+
+/* FUN FACTS */
+.fun-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:96px;}
+.fun-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px 20px;transition:transform 0.2s,box-shadow 0.2s;}
+.fun-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,0.06);}
+.fun-emoji{font-size:26px;margin-bottom:12px;}
+.fun-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;}
+.fun-text{font-size:12px;color:var(--muted);line-height:1.55;}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.footer-name{font-family:'DM Serif Display',serif;font-size:15px;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--text);}
+
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .section-wrap{padding:0 24px;}
+  .hero-grid{grid-template-columns:1fr;padding-top:96px;gap:36px;}
+  .about-wrap .about-block{width:100%;}
+  .projects-grid{grid-template-columns:1fr 1fr;}
+  .modal-grid{grid-template-columns:1fr;}
+  .modal-meta{grid-template-columns:1fr 1fr;}
+  .cv-grid{grid-template-columns:1fr;}
+  .fun-grid{grid-template-columns:1fr 1fr;}
+  footer{padding:24px;flex-direction:column;gap:14px;align-items:flex-start;}
+}
+@media(max-width:600px){
+  .projects-grid{grid-template-columns:1fr;}
+  .fun-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Rama Niharika Rudra</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#cv">CV</a>
+    <a href="#beyond">Beyond</a>
+    <a href="mailto:rudra.ramaniharika@gmail.com">rudra.ramaniharika@gmail.com</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="section-wrap">
+  <div class="hero-grid">
+
+    <!-- LEFT -->
+    <div>
+      <span class="hero-tag">Process &amp; Continuous Improvement Engineer</span>
+      <h1 class="hero-name">Rama<br><em>Niharika</em><br>Rudra</h1>
+      <p class="hero-statement">Process and continuous improvement engineer with hands-on experience in Tier-1 automotive manufacturing — applying Lean, Six Sigma, and quality engineering principles across complex, multi-program environments at ZF Group.</p>
+      <a href="#projects" class="hero-cta">View Projects <span>↓</span></a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-cards">
+
+      <div class="meta-card">
+        <h4>At a glance</h4>
+        <div class="stat-grid">
+          <div style="text-align:center"><span class="stat-num">5+</span><span class="stat-label">Years exp.</span></div>
+          <div style="text-align:center"><span class="stat-num">6+</span><span class="stat-label">Projects</span></div>
+          <div style="text-align:center"><span class="stat-num">LU</span><span class="stat-label">Available</span></div>
+        </div>
+      </div>
+
+      <div class="meta-card">
+        <h4>Contact</h4>
+        <div class="contact-row">
+          <a href="https://linkedin.com/in/niharikarudra" target="_blank" class="contact-chip">linkedin.com/in/niharikarudra ↗</a>
+          <a href="mailto:rudra.ramaniharika@gmail.com" class="contact-chip">rudra.ramaniharika@gmail.com</a>
+          <span class="contact-chip">+352 661 601 616</span>
+        </div>
+      </div>
+
+      <div class="meta-card" style="background:var(--faint);">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="green-dot"></span>
+          <span style="font-size:12px;color:var(--muted);">Based in Luxembourg &mdash; open to roles across the <strong style="color:var(--text);font-weight:600;">Greater Region (LU/BE/DE/FR)</strong> and <strong style="color:var(--text);font-weight:600;">remote opportunities</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-wrap">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:80px;">
+
+    <!-- Left: Background story -->
+    <div class="about-block">
+      <h3>Background</h3>
+      <p class="about-text">I didn't take a straight path into process improvement. I started in data quality at RMSI, moved to Italy for a Master's in Design &amp; Engineering at Politecnico di Milano, and worked in product design and graphic design along the way. Those experiences changed how I see problems — I stopped thinking only about whether something was technically correct and started thinking about whether it was <em>clear</em>.</p>
+      <p class="about-text" style="margin-top:12px;">At ZF Group, I was a mechanical design engineer — but what I kept being drawn to was the friction around the work. Drawings cycling through four reviews because tolerances weren't clear. Meetings where everyone had a different version of the same status. Documentation that existed but wasn't helping anyone. That's where I found my focus: not just solving problems, but making the way teams work clearer, more structured, and less repetitive.</p>
+      <p class="about-text" style="margin-top:12px;">That's what led me to Lean Six Sigma and continuous improvement. I'm an engineer who thinks a lot about clarity — how information moves between teams, where it breaks down, and how to fix it structurally. Technical depth plus design thinking plus process improvement mindset. That combination is what I bring.</p>
+    </div>
+
+    <!-- Right: Core Competencies + Core Strengths in one card -->
+    <div class="about-block">
+      <h3>Core Competencies</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;margin-bottom:24px;">
+        <div style="background:var(--faint);border:1px solid var(--border);border-radius:10px;padding:11px 14px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:1px;color:var(--muted);margin-bottom:3px;">CI METHODOLOGY</div>
+          <div style="font-size:12.5px;color:var(--text);line-height:1.5;">DMAIC · Kaizen · PDCA · VSM · 5S · Lean Manufacturing</div>
+        </div>
+        <div style="background:var(--faint);border:1px solid var(--border);border-radius:10px;padding:11px 14px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:1px;color:var(--muted);margin-bottom:3px;">QUALITY SYSTEMS</div>
+          <div style="font-size:12.5px;color:var(--text);line-height:1.5;">FMEA · 8D · APQP/PPAP · SPC · IATF 16949 · ISO 9001</div>
+        </div>
+        <div style="background:var(--faint);border:1px solid var(--border);border-radius:10px;padding:11px 14px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:1px;color:var(--muted);margin-bottom:3px;">DATA &amp; TOOLS</div>
+          <div style="font-size:12.5px;color:var(--text);line-height:1.5;">Excel · Power BI · Minitab · SAP · Windchill PLM</div>
+        </div>
+        <div style="background:var(--faint);border:1px solid var(--border);border-radius:10px;padding:11px 14px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:1px;color:var(--muted);margin-bottom:3px;">ENGINEERING</div>
+          <div style="font-size:12.5px;color:var(--text);line-height:1.5;">GD&amp;T · Tolerance Analysis · SolidWorks · CATIA · CREO</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--border);margin-bottom:20px;"></div>
+      <h3>Core Strengths</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+        <span class="skill-pill-sm">Lean Six Sigma Black Belt</span>
+        <span class="skill-pill-sm">DMAIC</span>
+        <span class="skill-pill-sm">Continuous Improvement</span>
+        <span class="skill-pill-sm">8D Problem Solving</span>
+        <span class="skill-pill-sm">FMEA</span>
+        <span class="skill-pill-sm">Root Cause Analysis</span>
+        <span class="skill-pill-sm">APQP / PPAP</span>
+        <span class="skill-pill-sm">IATF 16949</span>
+        <span class="skill-pill-sm">ISO 9001</span>
+        <span class="skill-pill-sm">Kaizen</span>
+        <span class="skill-pill-sm">Value Stream Mapping</span>
+        <span class="skill-pill-sm">5S</span>
+        <span class="skill-pill-sm">KPI Dashboards</span>
+        <span class="skill-pill-sm">SPC / Minitab</span>
+        <span class="skill-pill-sm">Power BI</span>
+        <span class="skill-pill-sm">GD&amp;T</span>
+        <span class="skill-pill-sm">Windchill PLM</span>
+        <span class="skill-pill-sm">SAP</span>
+        <span class="skill-pill-sm">Cross-functional Coordination</span>
+        <span class="skill-pill-sm">SOP Development</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section-wrap">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card" onclick="openModal(0)">
+      <div class="card-accent-bar" style="background:#1F6FBF"></div>
+      <div class="card-body">
+        <div class="card-top"><div class="card-badge" style="background:#1F6FBF">01</div><span class="card-arrow">↗</span></div>
+        <div class="card-title">Non-Conformance Reduction</div>
+        <div class="card-subtitle">Transmission &amp; E-Motor Programs · ZF Group</div>
+        <div class="card-divider"></div>
+        <div class="card-tools">8D · FMEA · 5 Whys · PDCA · IATF 16949 · ISO 9001</div>
+        <div class="card-outcome-label">Key Outcome</div>
+        <div class="card-outcome" style="color:#1F6FBF">~15% reduction in repeat NCRs | Review cycles cut 3–4 → 1–2</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal(1)">
+      <div class="card-accent-bar" style="background:#0D7377"></div>
+      <div class="card-body">
+        <div class="card-top"><div class="card-badge" style="background:#0D7377">02</div><span class="card-arrow">↗</span></div>
+        <div class="card-title">KPI Dashboard &amp; Process Visibility</div>
+        <div class="card-subtitle">Program Status Tracking · ZF Group</div>
+        <div class="card-divider"></div>
+        <div class="card-tools">Excel · PDCA · Structured Tracker Design</div>
+        <div class="card-outcome-label">Key Outcome</div>
+        <div class="card-outcome" style="color:#0D7377">~30–60 min saved per review cycle | Single shared reference adopted</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal(2)">
+      <div class="card-accent-bar" style="background:#5B2D8E"></div>
+      <div class="card-body">
+        <div class="card-top"><div class="card-badge" style="background:#5B2D8E">03</div><span class="card-arrow">↗</span></div>
+        <div class="card-title">Cross-functional APQP Coordination</div>
+        <div class="card-subtitle">EV Powertrain Development · ZF Group</div>
+        <div class="card-divider"></div>
+        <div class="card-tools">APQP · PPAP · FMEA · Windchill PLM · SAP</div>
+        <div class="card-outcome-label">Key Outcome</div>
+        <div class="card-outcome" style="color:#5B2D8E">~90% on-time milestone delivery | Zero-defect PPAP approvals</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal(3)">
+      <div class="card-accent-bar" style="background:#B85C00"></div>
+      <div class="card-body">
+        <div class="card-top"><div class="card-badge" style="background:#B85C00">04</div><span class="card-arrow">↗</span></div>
+        <div class="card-title">DMAIC — Design Review Optimization</div>
+        <div class="card-subtitle">LSSBB Training Project · ZF Context</div>
+        <div class="card-divider"></div>
+        <div class="card-tools">DMAIC · SIPOC · Ishikawa · 5 Whys · Control Plan</div>
+        <div class="card-outcome-label">Key Outcome</div>
+        <div class="card-outcome" style="color:#B85C00">Full DMAIC end-to-end | Iterations targeted 3–4 → 1–2 cycles</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal(4)">
+      <div class="card-accent-bar" style="background:#1B7A4A"></div>
+      <div class="card-body">
+        <div class="card-top"><div class="card-badge" style="background:#1B7A4A">05</div><span class="card-arrow">↗</span></div>
+        <div class="card-title">Design Defect &amp; Tolerance Optimization</div>
+        <div class="card-subtitle">E-Motor Housing &amp; Transmission · ZF Group</div>
+        <div class="card-divider"></div>
+        <div class="card-tools">GD&amp;T · Tolerance Stack-up · Drawing Audit · 5 Whys</div>
+        <div class="card-outcome-label">Key Outcome</div>
+        <div class="card-outcome" style="color:#1B7A4A">~15% first-pass acceptance improvement | ~10% fitment reduction</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal(5)">
+      <div class="card-accent-bar" style="background:#374785"></div>
+      <div class="card-body">
+        <div class="card-top"><div class="card-badge" style="background:#374785">06</div><span class="card-arrow">↗</span></div>
+        <div class="card-title">Engineering Change &amp; Documentation</div>
+        <div class="card-subtitle">PLM Discipline &amp; Change Control · ZF Group</div>
+        <div class="card-divider"></div>
+        <div class="card-tools">Windchill PLM · SAP · Excel Tracker · PDCA · IATF 16949</div>
+        <div class="card-outcome-label">Key Outcome</div>
+        <div class="card-outcome" style="color:#374785">~20% retrieval error reduction | ~10% turnaround improvement</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv" class="section-wrap">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">CV</h2>
+  </div>
+  <div class="cv-wrap">
+    <div class="cv-header">
+      <h2>Rama Niharika Rudra</h2>
+      <p>Process &amp; Continuous Improvement Engineer &nbsp;·&nbsp; Ex ZF Group &nbsp;·&nbsp; Luxembourg &nbsp;·&nbsp; Available Immediately &nbsp;·&nbsp; Driving Licence: Category B</p>
+    </div>
+    <div class="cv-grid">
+
+      <!-- LEFT: Experience -->
+      <div>
+        <div class="cv-col-label">Work Experience</div>
+
+        <div class="cv-role">
+          <div class="cv-role-title">Professional Development &amp; Relocation</div>
+          <div class="cv-role-meta">Luxembourg &nbsp;·&nbsp; Jul 2024 – Present</div>
+          <ul>
+            <li>Completed LSSBB, ECIL certifications focused on process improvement and operational excellence</li>
+            <li>Strengthened skills in data analysis, process optimisation, and quality tools (Minitab, Power BI)</li>
+            <li>Developing German language skills for European engineering environments</li>
+          </ul>
+        </div>
+
+        <div class="cv-role">
+          <div class="cv-role-title">Senior Engineer – Process &amp; Quality</div>
+          <div class="cv-role-meta">ZF Group, India &nbsp;·&nbsp; Jan 2023 – Jun 2024</div>
+          <ul>
+            <li>Delivered 50+ component designs across 4–6 concurrent APQP programs, 90% on-time milestone delivery</li>
+            <li>Contributed to FMEA and 8D root cause investigations — reduced repeat NCRs by ~15%</li>
+            <li>Managed engineering change control in Windchill PLM — reduced retrieval errors by ~20%</li>
+            <li>Developed Excel KPI dashboards; participated in Kaizen and DMAIC improvement initiatives</li>
+          </ul>
+        </div>
+
+        <div class="cv-role">
+          <div class="cv-role-title">Engineer – Design &amp; Process</div>
+          <div class="cv-role-meta">ZF Group, India &nbsp;·&nbsp; Jun 2021 – Jan 2023</div>
+          <ul>
+            <li>Produced CAD models and drawings for component adaptation across multiple APQP programs</li>
+            <li>Conducted GD&T reviews and tolerance analysis — improved first-pass acceptance by ~15%</li>
+            <li>Developed SOPs, work instructions, and documentation in Windchill and SAP</li>
+            <li>Coordinated with design, manufacturing, and quality teams during PPAP submissions</li>
+          </ul>
+        </div>
+
+        <div class="cv-role">
+          <div class="cv-role-title">Graphic Designer – Data Visualisation</div>
+          <div class="cv-role-meta">AlphaValley Advisors LLP, India &nbsp;·&nbsp; Nov 2020 – Jun 2021</div>
+          <ul>
+            <li>Structured complex technical and business information into standardised visual assets</li>
+            <li>Improved documentation clarity and stakeholder communication, supporting faster decision-making</li>
+          </ul>
+        </div>
+
+        <div class="cv-role">
+          <div class="cv-role-title">Product Designer – Design Standardisation</div>
+          <div class="cv-role-meta">PRM DESIGN Srl., Italy &nbsp;·&nbsp; Nov 2019 – Mar 2020</div>
+          <ul>
+            <li>Reduced prototype rework by 10–15% by supporting feasibility assessments and manufacturability reviews</li>
+            <li>Coordinated with design and prototyping teams across multiple parallel initiatives</li>
+          </ul>
+        </div>
+
+        <div class="cv-role">
+          <div class="cv-role-title">GIS Engineer – Data Quality</div>
+          <div class="cv-role-meta">RMSI Pvt Ltd, India &nbsp;·&nbsp; Nov 2016 – Sep 2017</div>
+          <ul>
+            <li>Enhanced data reliability by applying SOP-driven validation and KPI-based quality checks</li>
+            <li>Improved delivery accuracy across multiple parallel client datasets</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT: Education first, then Skills, Certs, Languages -->
+      <div>
+        <div class="cv-col-label">Education</div>
+        <div class="cv-edu">
+          <div class="cv-edu-deg">M.Sc. Design &amp; Engineering &nbsp;·&nbsp; 2017–2020</div>
+          <div class="cv-edu-school">Politecnico di Milano, Italy</div>
+        </div>
+        <div class="cv-edu">
+          <div class="cv-edu-deg">B.Tech. Mechanical Engineering &nbsp;·&nbsp; 2012–2016</div>
+          <div class="cv-edu-school">Jawaharlal Nehru Technological University, India</div>
+        </div>
+
+        <div class="cv-gap"></div>
+        <div class="cv-col-label">Technical Skills</div>
+        <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:4px;">
+          <div><span style="font-size:12px;font-weight:600;">Process &amp; CI</span><br><span style="font-size:12px;color:#555550;">Lean Manufacturing, Six Sigma (DMAIC), Kaizen, VSM, 5S, PDCA</span></div>
+          <div><span style="font-size:12px;font-weight:600;">Quality Systems</span><br><span style="font-size:12px;color:#555550;">FMEA, 8D, Ishikawa, Control Plans, PPAP/APQP, ISO 9001 / IATF 16949</span></div>
+          <div><span style="font-size:12px;font-weight:600;">CAD / Engineering</span><br><span style="font-size:12px;color:#555550;">SolidWorks, AutoCAD, CATIA, CREO — process layout, GD&T</span></div>
+          <div><span style="font-size:12px;font-weight:600;">Data &amp; ERP</span><br><span style="font-size:12px;color:#555550;">SAP, Windchill PLM, Excel (KPI, SPC), Power BI, Minitab</span></div>
+          <div><span style="font-size:12px;font-weight:600;">Documentation</span><br><span style="font-size:12px;color:#555550;">SOPs, technical reports, engineering change management</span></div>
+        </div>
+
+        <div class="cv-gap"></div>
+        <div class="cv-col-label">Certifications</div>
+        <div class="cert-cv-item">
+          <div class="cert-cv-name">Lean Six Sigma Black Belt (AI-Enabled)</div>
+          <div class="cert-cv-issuer">Issued by Benchmark Six Sigma</div>
+        </div>
+        <div class="cert-cv-item">
+          <div class="cert-cv-name">Lean Six Sigma Green Belt (AI-Enabled)</div>
+          <div class="cert-cv-issuer">Issued by Benchmark Six Sigma</div>
+        </div>
+        <div class="cert-cv-item">
+          <div class="cert-cv-name">Excellence in Continuous Improvement Leadership (ECIL)</div>
+          <div class="cert-cv-issuer">Issued by Benchmark Six Sigma</div>
+        </div>
+        <div class="cert-cv-item">
+          <div class="cert-cv-name">Business Analytics Foundation</div>
+          <div class="cert-cv-issuer">Issued by Benchmark Six Sigma</div>
+        </div>
+
+        <div class="cv-gap"></div>
+        <div class="cv-col-label">Languages</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:20px;">
+          <div style="font-size:13px;"><span style="font-weight:600;">English</span> &nbsp;C1 Professional</div>
+          <div style="font-size:13px;"><span style="font-weight:600;">German</span> &nbsp;A1 — progressing to A2</div>
+          <div style="font-size:13px;"><span style="font-weight:600;">French</span> &nbsp;A0 Basic Awareness</div>
+        </div>
+
+        <div class="work-auth-box">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:3px;">Work Authorisation</div>
+          <div style="font-size:13px;font-weight:500;">Luxembourg dependent visa — available immediately</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">Open to Greater Region (LU/BE/DE/FR) &amp; remote opportunities</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">Driving licence: Category B</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND THE CV -->
+<section id="beyond" class="section-wrap">
+  <div class="section-header">
+    <span class="section-num">✦</span>
+    <h2 class="section-title">Beyond the CV</h2>
+  </div>
+  <div class="fun-grid">
+
+    <div class="fun-card">
+      <div class="fun-emoji">🇱🇺</div>
+      <div class="fun-title">Followed my heart to Luxembourg</div>
+      <div class="fun-text">Married the love of my life and moved countries. Best decision I've made. Now building a life here.</div>
+    </div>
+
+    <div class="fun-card">
+      <div class="fun-emoji">🇩🇪</div>
+      <div class="fun-title">Learning German</div>
+      <div class="fun-text">Slowly but intentionally. A2 is the goal right now. It matters to me to actually integrate, not just visit.</div>
+    </div>
+
+    <div class="fun-card">
+      <div class="fun-emoji">📄</div>
+      <div class="fun-title">Compulsive document cleaner</div>
+      <div class="fun-text">I cannot open a messy PDF or presentation and leave it alone. Fixing it is not optional for me.</div>
+    </div>
+
+    <div class="fun-card">
+      <div class="fun-emoji">📷</div>
+      <div class="fun-title">Fujifilm X100VI</div>
+      <div class="fun-text">Shoot on film simulations. Streets, light, quiet moments. Photography is how I slow down.</div>
+    </div>
+
+    <div class="fun-card">
+      <div class="fun-emoji">🎨</div>
+      <div class="fun-title">Freelance graphic designer</div>
+      <div class="fun-text">I take on design work on the side. The eye for layout and clarity never fully switched off after the design years.</div>
+    </div>
+
+    <div class="fun-card">
+      <div class="fun-emoji">🌿</div>
+      <div class="fun-title">Plant parent</div>
+      <div class="fun-text">My home has more plants than furniture. Keeping them alive is a discipline I take seriously.</div>
+    </div>
+
+    <div class="fun-card">
+      <div class="fun-emoji">🥾</div>
+      <div class="fun-title">Hiker &amp; traveller</div>
+      <div class="fun-text">I go where there are trails or new streets to walk. Travelling is how I reset and get curious again.</div>
+    </div>
+
+    <div class="fun-card">
+      <div class="fun-emoji">🍳</div>
+      <div class="fun-title">Cook by instinct</div>
+      <div class="fun-text">Mostly Indian, sometimes Italian — blame the years in Milan. No recipes, just taste and adjust.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="section-wrap">
+  <footer>
+    <span class="footer-name">Rama Niharika Rudra</span>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/niharikarudra" target="_blank">LinkedIn ↗</a>
+      <a href="mailto:rudra.ramaniharika@gmail.com">rudra.ramaniharika@gmail.com</a>
+      <a href="tel:+352661601616">+352 661 601 616</a>
+    </div>
+  </footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-badge" id="modalBadge"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-meta" id="modalMeta"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const PROJECTS=[
+  {number:"01",ac:"#1F6FBF",lc:"#E8F0FB",title:"Non-Conformance Reduction",subtitle:"Transmission & E-Motor Programs · ZF Group",toolsList:["8D","FMEA","5 Whys","PDCA","IATF 16949","ISO 9001"],meta:{role:"Active Contributor",scope:"2–3 APQP Programs",duration:"6–8 Months",evidence:"ZF Work Experience"},context:"At ZF Group, multiple concurrent APQP programs for transmission and e-motor components were experiencing persistent quality friction. Design reviews were taking 3–4 iteration cycles before approval.",problem:"Tolerance ambiguity, documentation revision mismatches, and interpretation gaps between design and manufacturing were causing recurring non-conformances. The pattern was systemic.",approach:"Reviewed past design review comment logs. Grouped recurring issues into categories: tolerance-related, documentation-related, and interpretation gaps. Applied 5 Whys. Contributed to 8D and FMEA discussions.",solution:"Improved drawing clarity standards and tolerance notation. Aligned expectations between design, manufacturing, and quality teams. Embedded improvements into SOP updates and review checklists.",results:[{label:"Design Review Cycles",before:"3–4 iterations per drawing",after:"Reduced to 1–2 cycles"},{label:"Repeat NCR Rate",before:"Recurring across programs",after:"~15% reduction"},{label:"PPAP Gate Readiness",before:"Frequent rework at gates",after:"Improved first-pass quality"}]},
+  {number:"02",ac:"#0D7377",lc:"#E0F5F5",title:"KPI Dashboard & Process Visibility",subtitle:"Program Status Tracking · ZF Group",toolsList:["Microsoft Excel","PDCA","Structured Tracker Design","Status Indicators"],meta:{role:"Self-initiated Owner",scope:"4–6 Active Programs",duration:"3–4 Weeks",evidence:"ZF Work Experience"},context:"Program status information was fragmented across emails, meeting notes, and individual engineer files. No single reference point existed for drawing status, revision levels, pending actions, or ownership.",problem:"Teams arrived at reviews with different versions of the same status. Review preparation was taking 30–60+ minutes per cycle just to reconcile information from multiple sources.",approach:"Identified the gap through direct observation — self-initiated. Defined what the team needed: component status, revision level, owner, pending actions, and deadlines. Designed a maintainable structure.",solution:"Built a structured Excel tracker with columns for component ID, revision status, owner, next action, and deadline. Introduced status indicators: In Progress / Under Review / Approved. Refined over 3–4 weeks.",results:[{label:"Review Prep Time",before:"30–60+ min per cycle",after:"~30–60 min saved"},{label:"Repeated Status Queries",before:"Frequent across all meetings",after:"Significantly reduced"},{label:"Cross-team Alignment",before:"Scattered, inconsistent views",after:"Single shared reference"}]},
+  {number:"03",ac:"#5B2D8E",lc:"#F0EBF8",title:"Cross-functional APQP Coordination",subtitle:"EV Powertrain Development · ZF Group",toolsList:["APQP","PPAP","FMEA","Windchill PLM","SAP","IATF 16949"],meta:{role:"Component Owner / Coordinator",scope:"4–6 Concurrent Programs",duration:"Ongoing — 3 Years",evidence:"ZF Work Experience"},context:"ZF Group's EV powertrain programs required coordinating new product development across design, quality, manufacturing, and supplier teams in Germany, the US, and China simultaneously.",problem:"Managing 4–6 concurrent APQP programs with cross-location dependencies created continuous risk. Late supplier inputs, open action backlogs, and time zone gaps threatened milestone delivery.",approach:"Took ownership of component-level delivery across all programs. Maintained active follow-up on open actions. Escalated blockers early rather than waiting for gate reviews to surface them.",solution:"Resolved a critical supplier misalignment through a joint cross-functional session. Maintained PPAP documentation readiness in Windchill. Clarified requirements between functions.",results:[{label:"Milestone Delivery",before:"4–6 programs simultaneously",after:"~90% on-time delivery"},{label:"PPAP Quality",before:"Multiple customer programs",after:"Zero-defect approvals"},{label:"Supplier Misalignment",before:"Late inputs causing rework",after:"Resolved via joint sessions"}]},
+  {number:"04",ac:"#B85C00",lc:"#FFF3E0",title:"DMAIC — Design Review Optimization",subtitle:"LSSBB Training Project · ZF Context",toolsList:["DMAIC","SIPOC","Ishikawa","5 Whys","PDCA","Control Plan"],meta:{role:"Project Lead (Training)",scope:"~30–40 Drawings, 2–3 Programs",duration:"2–3 Months",evidence:"LSSBB Training Project"},context:"Applied as part of Lean Six Sigma Black Belt certification training using the full DMAIC framework on the design review and release workflow at ZF Group.",problem:"Design review cycles averaged 3–4 iterations before approval. ~60–70% of drawings received repeat comments in the same category — a systemic process gap.",approach:"Define: scoped to review workflow; built SIPOC. Measure: baselined iteration counts. Analyse: Ishikawa + 5 Whys — root cause: no standardised submission-readiness definition.",solution:"Improve: pre-release drawing checklist, standardised review criteria, structured comment tracking. Control: review readiness gate, iteration count KPI, periodic comment audit.",results:[{label:"Review Iterations",before:"Average 3–4 cycles",after:"Target: 1–2 cycles"},{label:"Repeat Comment Rate",before:"~60–70% of drawings",after:"Target: below 30%"},{label:"Pre-review Validation",before:"No structured gate",after:"Checklist gate defined"}]},
+  {number:"05",ac:"#1B7A4A",lc:"#E8F5EE",title:"Design Defect & Tolerance Optimization",subtitle:"E-Motor Housing & Transmission · ZF Group",toolsList:["GD&T Analysis","Tolerance Stack-up","Drawing Audit","5 Whys","FMEA","Windchill"],meta:{role:"Design Engineer — Component Owner",scope:"~15–20 Components",duration:"Across Multiple Programs",evidence:"ZF Work Experience"},context:"Recurring fitment issues emerged during prototype assembly on e-motor housing and transmission components. Components that cleared individual reviews were revealing incompatibilities at assembly interfaces.",problem:"Tolerance stack-up exceeded functional limits. GD&T callouts were missing or ambiguous on ~60% of audited drawings. Drawing standards relied on individual knowledge rather than a verifiable process.",approach:"Conducted GD&T reviews and tolerance stack-up calculations. Audited ~15–20 drawings. Applied 5 Whys — root cause: no standardised GD&T requirement at assembly interfaces.",solution:"Updated GD&T callouts and tolerance limits. Introduced a pre-release drawing checkpoint. Issued revised drawing revisions in Windchill. Fed learnings into team design guidelines.",results:[{label:"First-pass Drawing Acceptance",before:"Frequent review failures",after:"~15% improvement"},{label:"Assembly Fitment Issues",before:"Recurring at interfaces",after:"~10% reduction"},{label:"GD&T Completeness",before:"~60% had incomplete callouts",after:"Critical interfaces defined"}]},
+  {number:"06",ac:"#374785",lc:"#EEF0FB",title:"Engineering Change & Documentation",subtitle:"PLM Discipline & Change Control · ZF Group",toolsList:["Windchill PLM","SAP","Excel Tracker","PDCA","IATF 16949"],meta:{role:"Change Owner — Component Level",scope:"~5–10 Active Changes",duration:"Ongoing — Senior Phase",evidence:"ZF Work Experience"},context:"Managing engineering changes across 4–6 concurrent APQP programs meant handling ~5–10 active changes at any time. Windchill PLM was the formal system but coordination happened informally via email.",problem:"Outdated versions were referenced in reviews, dependencies were missed, and change approvals were delayed by unclear ownership.",approach:"Identified the gap as structural — PLM provided infrastructure but workflow was informal. Defined requirements: status visibility, ownership, dependency tracking, linked documentation.",solution:"Built a structured Excel change tracker with change ID, revision status, owner, next action, dependencies, and target date. Reinforced Windchill naming conventions. Coordinated SAP BOM updates.",results:[{label:"Document Retrieval Errors",before:"Frequent wrong versions used",after:"~20% reduction"},{label:"Change Turnaround Time",before:"Delayed by unclear ownership",after:"~10% improvement"},{label:"Revision Visibility",before:"Required email confirmation",after:"Visible in tracker instantly"}]},
+];
+
+function openModal(idx){
+  const p=PROJECTS[idx];
+  document.getElementById('modalBadge').textContent=p.number;
+  document.getElementById('modalBadge').style.background=p.ac;
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalMeta').innerHTML=`<div class="modal-meta-item"><div class="modal-meta-label">Role</div><div class="modal-meta-value" style="color:${p.ac}">${p.meta.role}</div></div><div class="modal-meta-item"><div class="modal-meta-label">Scope</div><div class="modal-meta-value" style="color:${p.ac}">${p.meta.scope}</div></div><div class="modal-meta-item"><div class="modal-meta-label">Duration</div><div class="modal-meta-value" style="color:${p.ac}">${p.meta.duration}</div></div><div class="modal-meta-item"><div class="modal-meta-label">Evidence Type</div><div class="modal-meta-value" style="color:${p.ac}">${p.meta.evidence}</div></div>`;
+  document.getElementById('modalBody').innerHTML=`<div class="modal-grid"><div class="modal-section"><div class="modal-section-label" style="color:${p.ac}"><span style="background:${p.ac}"></span>Context</div><p class="modal-section-text">${p.context}</p></div><div class="modal-section"><div class="modal-section-label" style="color:${p.ac}"><span style="background:${p.ac}"></span>Problem</div><p class="modal-section-text">${p.problem}</p></div><div class="modal-section"><div class="modal-section-label" style="color:${p.ac}"><span style="background:${p.ac}"></span>Approach</div><p class="modal-section-text">${p.approach}</p></div><div class="modal-section"><div class="modal-section-label" style="color:${p.ac}"><span style="background:${p.ac}"></span>Solution</div><p class="modal-section-text">${p.solution}</p></div><div class="modal-section full"><div class="modal-section-label" style="color:${p.ac}"><span style="background:${p.ac}"></span>Impact</div><div class="impact-grid">${p.results.map(r=>`<div><div class="impact-label">${r.label}</div><div class="impact-pills"><span class="pill-before">Before: ${r.before}</span><span class="pill-after" style="color:${p.ac};background:${p.lc};border-color:${p.ac}">After: ${r.after}</span></div></div>`).join('')}</div></div><div class="modal-section full"><div class="modal-section-label" style="color:${p.ac}"><span style="background:${p.ac}"></span>Tools &amp; Methods</div><div class="tools-wrap">${p.toolsList.map(t=>`<span class="tool-tag">${t}</span>`).join('')}</div></div></div>`;
+  document.getElementById('modal').scrollTop=0;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function handleOverlayClick(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>

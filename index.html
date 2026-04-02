@@ -13,9 +13,10 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
 .nav-brand{font-family:'DM Serif Display',serif;font-size:16px;letter-spacing:-.3px;color:var(--navy);}
-.nav-links{display:flex;gap:28px;}
+.nav-links{display:flex;gap:28px;align-items:center;}
 .nav-links a{font-size:13px;font-weight:500;color:var(--mut);text-decoration:none;transition:color .2s;}
 .nav-links a:hover{color:var(--navy);}
+.nav-badge{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:var(--lblue);border:1px solid var(--blue);color:var(--navy);padding:3px 10px;border-radius:100px;}
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;padding:100px 48px 60px;}
 .hero-tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mut);border:1px solid var(--bdr);border-radius:100px;padding:5px 16px;margin-bottom:24px;}
 .hero-name{font-family:'DM Serif Display',serif;font-size:clamp(40px,5vw,62px);line-height:1.07;letter-spacing:-1.5px;margin-bottom:12px;}
@@ -189,6 +190,7 @@ footer{border-top:1px solid var(--bdr);padding:28px 48px;max-width:1200px;margin
     <a href="#projects">Projects</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
+    <span class="nav-badge">Process / CI</span>
   </div>
 </nav>
 
@@ -222,7 +224,7 @@ footer{border-top:1px solid var(--bdr);padding:28px 48px;max-width:1200px;margin
       <div class="hero-divider"></div>
       <div class="contact-row">
         <div class="contact-item"><span class="ci">&#128205;</span>Luxembourg</div>
-        <div class="contact-item"><span class="ci">&#9993;</span><a href="/cdn-cgi/l/email-protection#6113140513004f13000c000f08090013080a0021060c00080d4f020e0c"><span class="__cf_email__" data-cfemail="93e1e6f7e1f2bde1f2fef2fdfafbf2e1faf8f2d3f4fef2faffbdf0fcfe">[email&#160;protected]</span></a></div>
+        <div class="contact-item"><span class="ci">&#9993;</span><a href="mailto:rudra.ramaniharika@gmail.com">rudra.ramaniharika@gmail.com</a></div>
         <div class="contact-item"><span class="ci">&#128222;</span><a href="tel:+352661601616">+352 661 601 616</a></div>
         <div class="contact-item"><span class="ci">&#128279;</span><a href="https://linkedin.com/in/niharikarudra" target="_blank">linkedin.com/in/niharikarudra</a></div>
         <div class="contact-item"><span class="ci">&#128663;</span>Driving Licence: Category B</div>
@@ -443,9 +445,9 @@ footer{border-top:1px solid var(--bdr);padding:28px 48px;max-width:1200px;margin
     </div>
     <div class="contact-body">
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#b8cacddccad996cad9d5d9d6d1d0d9cad1d3d9f8dfd5d9d1d496dbd7d5" class="contact-link-item">
+        <a href="mailto:rudra.ramaniharika@gmail.com" class="contact-link-item">
           <div class="cli-icon">&#9993;</div>
-          <div><div class="cli-label">Email</div><div class="cli-val"><span class="__cf_email__" data-cfemail="b4c6c1d0c6d59ac6d5d9d5dadddcd5c6dddfd5f4d3d9d5ddd89ad7dbd9"><span class="__cf_email__" data-cfemail="86f4f3e2f4e7a8f4e7ebe7e8efeee7f4efede7c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</span></span></div></div>
+          <div><div class="cli-label">Email</div><div class="cli-val">rudra.ramaniharika@gmail.com</div></div>
         </a>
         <a href="tel:+352661601616" class="contact-link-item">
           <div class="cli-icon">&#128222;</div>
@@ -484,7 +486,7 @@ footer{border-top:1px solid var(--bdr);padding:28px 48px;max-width:1200px;margin
     <span class="foot-name">Rama Niharika Rudra</span>
     <div class="foot-links">
       <a href="https://linkedin.com/in/niharikarudra" target="_blank">LinkedIn &#8599;</a>
-      <a href="/cdn-cgi/l/email-protection#5527203127347b273438343b3c3d34273c3e34153238343c397b363a38"><span class="__cf_email__" data-cfemail="e59790819784cb978488848b8c8d84978c8e84a58288848c89cb868a88">[email&#160;protected]</span></a>
+      <a href="mailto:rudra.ramaniharika@gmail.com">rudra.ramaniharika@gmail.com</a>
       <a href="tel:+352661601616">+352 661 601 616</a>
     </div>
   </footer>
@@ -501,7 +503,7 @@ footer{border-top:1px solid var(--bdr);padding:28px 48px;max-width:1200px;margin
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 <script>
 const P=[
   {n:"01",ac:"#1F6FBF",lc:"#E8F0FB",t:"Non-Conformance Reduction",tl:["8D","FMEA","5 Whys","PDCA","IATF 16949","ISO 9001"],m:{role:"Active Contributor",scope:"2-3 APQP Programs",dur:"6-8 Months",ev:"ZF Work Experience"},ctx:"At ZF Group, multiple concurrent APQP programs were experiencing persistent quality friction. Design reviews were taking 3-4 iteration cycles before approval.",prob:"Tolerance ambiguity, documentation revision mismatches, and interpretation gaps between design and manufacturing were causing recurring non-conformances.",app:"Reviewed past design review comment logs. Grouped issues into categories: tolerance-related, documentation-related, interpretation gaps. Applied 5 Whys and contributed to 8D and FMEA discussions.",sol:"Improved drawing clarity standards. Aligned expectations across design, manufacturing, and quality teams. Embedded improvements into SOP updates and review checklists.",res:[{l:"Design Review Cycles",b:"3-4 iterations",a:"1-2 cycles"},{l:"Repeat NCR Rate",b:"Recurring across programs",a:"~15% reduction"},{l:"PPAP Gate Readiness",b:"Frequent rework",a:"Improved first-pass"}]},
